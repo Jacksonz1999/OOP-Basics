@@ -3,17 +3,22 @@
 class User
 {
     const variable = "archivo"; //! static constant
-    private string $name;
-    private string $lastName;
+    public string $name;
+    public string $lastName;
     public int $age;
+    public string $gender;
+    public string $study;
+
 
     // -------------THAT IS CONSTRUCTOR-----------------------------//
 
-    public function __construct(string $name, string $lastName, int $age)
+    public function __construct(string $name, string $lastName, int $age, string $gender, string $study)
     {
         $this->name = $name;
         $this->lastName = $lastName;
         $this->age = $age;
+        $this ->study = $study;
+        $this ->gender = $gender;
     }
 
     // -------------THAT IS DESTRUCTOR-----------------------------//
@@ -63,22 +68,40 @@ class User
 }
 class alumnos extends User
 {
-   
-    public function getName()
+    public $height;
+
+    public function __construct($name, $lastName, $age, $height, $study, $gender)
     {
-        return  "¡The name of this person is $this->name!";   //!ERROR HERE
+        parent::  __construct($name, $lastName, $age, $study, $gender);
+        
+        $this->height = $height;
+    }
+
+    public function getHeight()
+    {
+        return $this->height;
+    }
+
+    public function setHeight($height)
+    {
+        return  "¡The name of this iPhone is $this->name!";
     }
 }
 
-$user = new User('JuanCarlos', 'Giner', 31);
+$user = new User('JuanCarlos', 'Giner', 31, "university","M");
 echo "Name :{$user->getName()}.<br>";
 echo "Surname: {$user->getlastName()}<br>";
 echo "Age:{$user->getAge()}<br>";
 
 
-$alumnos = new alumnos('Jackson', 'zhou', 23, '182cm');
-echo $alumnos ->getName();
+$alumnos = new alumnos('jackson', 'zhou', 23,"182cm","M",'University');
 
+echo "The name is {$alumnos->name}, the surname is {$alumnos->lastName},the age is {$alumnos->age},  and the height is {$alumnos->height}<br>.";
+
+
+
+
+echo User::variable;
 
 
 
